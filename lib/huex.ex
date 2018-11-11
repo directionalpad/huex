@@ -229,7 +229,7 @@ defmodule Huex do
   Requires the connection to be authorized.
   """
   def scene_info(bridge, scene) do
-    bridge |> scene_info(bridge, scene) |> get_json
+    bridge |> scene_url(bridge, scene) |> get_json
   end
 
   @doc """
