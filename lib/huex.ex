@@ -22,6 +22,11 @@ defmodule Huex do
   @type group :: non_neg_integer | binary
 
   @typedoc """
+  Scene idenitifier can be either numeric or binary (e.g. "1")
+  """
+  @type scene :: non_neg_integer | binary
+
+  @typedoc """
   Tuple containing respectively the hue (0-65535), staturation (0-255) and value/brillance (0-255) components
   """
   @type hsv_color :: {non_neg_integer, non_neg_integer, non_neg_integer}
