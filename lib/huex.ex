@@ -223,6 +223,15 @@ defmodule Huex do
     bridge |> scenes_url |> get_json
   end
 
+  @spec scene_info(Bridge.t, scene) :: Map.t
+  @doc """
+  Fetches all informations available about the given `scene` connected to the `bridge`.
+  Requires the connection to be authorized.
+  """
+  def scene_info(bridge, scene) do
+    bridge |> scene_info(bridge, scene) |> get_json
+  end
+
   @doc """
   Lists the light groups configured for the given `bridge`.
   Requires the connection to be authorized.
@@ -372,6 +381,7 @@ defmodule Huex do
   defp lights_url(bridge), do: user_api_url(bridge, "lights")
   
   defp scenes_url(bridge), do: user_api_url(bridge, "scenes")
+  defp scene_url(bridge, scene), do: scenes_url(bridge) <> "/#{scene}"
 
   defp user_api_url(bridge, relative_path), do: user_api_url(bridge) <> "/#{relative_path}"
   defp user_api_url(bridge), do: api_url(bridge, Map.fetch!(bridge, :username))
